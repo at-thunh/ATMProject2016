@@ -11,7 +11,6 @@ import RealmS
 
 class CheckPassViewController: UIViewController {
     var isSend = 0
-    private var numberAccount = 0
     private var pass = ""
     private var userData: Results<User>?
     private var accountData: Results<Account>?
@@ -48,6 +47,7 @@ class CheckPassViewController: UIViewController {
             alertView.show()
         } else {
             let filter = RealmS().objects(User).filter("numberCard == %@ && pass == %@", numberAccountTextfield.text!, passTextField.text! )
+            print(filter.count)
             if filter.count == 0 {
                 let alertView = CBAlertView(title: AppDefine.AppName,
                                             message: AppDefine.errorLogin,
