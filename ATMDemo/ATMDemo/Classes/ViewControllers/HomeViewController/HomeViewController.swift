@@ -28,18 +28,24 @@ class HomeViewController: UIViewController {
         if let name = userDefault.valueForKey("runFirst") {
             print("No \(name)")
         } else {
-            userDefault.setValue("runFirst", forKey: "runFirst")
-            let atm = ATM()
-            atm.sheets10 = 5
-            atm.sheets20 = 5
-            atm.sheets50 = 5
-            atm.sheets100 = 5
-            atm.sheets200 = 5
-            atm.sheets500 = 5
-            atm.amount = "4400000"
             RealmS().write { realm in
-                realm.add(atm)
+                realm.deleteAll()
             }
+            userDefault.setValue("runFirst", forKey: "runFirst")            
+        }
+    }
+    
+    func addMoneyAtm() {
+        let atm = ATM()
+        atm.sheets10 = 5
+        atm.sheets20 = 5
+        atm.sheets50 = 5
+        atm.sheets100 = 5
+        atm.sheets200 = 5
+        atm.sheets500 = 5
+        atm.amount = "4400000"
+        RealmS().write { realm in
+            realm.add(atm)
         }
     }
     
