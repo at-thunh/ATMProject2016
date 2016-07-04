@@ -31,7 +31,8 @@ class HomeViewController: UIViewController {
             RealmS().write { realm in
                 realm.deleteAll()
             }
-            userDefault.setValue("runFirst", forKey: "runFirst")            
+            userDefault.setValue("runFirst", forKey: "runFirst")
+            addMoneyAtm()
         }
     }
     
